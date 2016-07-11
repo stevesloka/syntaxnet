@@ -27,11 +27,14 @@ PARSER_EVAL=bazel-bin/syntaxnet/parser_eval
 MODEL_DIR=syntaxnet/models/parsey_mcparseface
 [[ "$1" == "--conll" ]] && INPUT_FORMAT=stdin-conll || INPUT_FORMAT=stdin
 
-# INPUT_FORMAT is the name of the file we want to process
-FILETXT=`Bob and alice like to eat Pizza!`
+MESSAGE="hey!"
+echo YO ***$MESSAGE
+
+
+echo "This is a test!"
 
 $PARSER_EVAL \
-  --input=$FILETXT \
+  --input=$INPUT_FORMAT2 \
   --output=stdout-conll \
   --hidden_layer_sizes=64 \
   --arg_prefix=brain_tagger \

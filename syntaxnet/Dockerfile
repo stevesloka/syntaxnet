@@ -13,7 +13,7 @@ RUN mkdir -p $SYNTAXNETDIR \
     && wget https://github.com/bazelbuild/bazel/releases/download/0.2.2b/bazel-0.2.2b-installer-linux-x86_64.sh \
     && chmod +x bazel-0.2.2b-installer-linux-x86_64.sh \
     && ./bazel-0.2.2b-installer-linux-x86_64.sh --user \
-    && git clone --recursive https://github.com/tensorflow/models.git \
+    && git clone --recursive https://github.com/stevesloka/syntaxnet.git \
     && cd $SYNTAXNETDIR/models/syntaxnet/tensorflow \
     && echo "\n\n\n" | ./configure \
     && apt-get autoremove -y \
@@ -26,9 +26,10 @@ WORKDIR $SYNTAXNETDIR/models/syntaxnet
 
 RUN mkdir /work
 ADD filename.txt /work/filename.txt
-ADD syntaxnet/demo.sh $SYNTAXNETDIR/models/syntaxnet/
+#ADD syntaxnet/demo.sh $SYNTAXNETDIR/models/syntaxnet/
 
-CMD [ "sh", "-c", "syntaxnet/demo.sh" ]
+#CMD [ "sh", "-c", "syntaxnet/demo.sh" ]
+CMD [ "sh", "-c", "echo 'Bob brought the pizza to Alice.' | syntaxnet/demo.sh" ]
 
 # COMMANDS to build and run
 # ===============================
